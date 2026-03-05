@@ -123,8 +123,8 @@ target_link_libraries(
 )
 
 # Copy assets and shaders
-$([[ -d Assets ]] && echo "file(COPY \${CMAKE_SOURCE_DIR}/Assets DESTINATION \${CMAKE_BINARY_DIR})")
-$([[ -d Shaders ]] && echo "file(COPY \${CMAKE_SOURCE_DIR}/Shaders DESTINATION \${CMAKE_BINARY_DIR})")
+$([[ -d Assets ]] && echo -e "file(CREATE_LINK\n\t\${CMAKE_SOURCE_DIR}/Assets\n\t\${CMAKE_BINARY_DIR}/Assets\n\tSYMBOLIC\n)")
+$([[ -d Shaders ]] && echo -e "file(CREATE_LINK\n\t\${CMAKE_SOURCE_DIR}/Shaders\n\t\${CMAKE_BINARY_DIR}/Shaders\n\tSYMBOLIC\n)")
 EOF
 echo -e "${clearln}${green}✓ CMakeLists.txt${reset}"
 

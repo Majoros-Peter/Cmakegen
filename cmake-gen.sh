@@ -136,9 +136,10 @@ if [[ ! -z $clangd_conf ]]; then
 echo -ne "${red}.clangd...${reset}"
 cat > .clangd << EOF
 CompileFlags:
-  Add:
-$( [[ -d $includes_dir ]] && echo -e "\t- -I$includes_dir" )
-$( [[ -d $imgui_dir ]] && echo -e "\t- -I$imgui_dir" )
+  Add: [
+$( [[ -d $includes_dir ]] && echo -e "    -I$includes_dir" ),
+$( [[ -d $imgui_dir ]] && echo -e "    -I$imgui_dir" )
+  ]
 EOF
 echo -e "${clearln}${green}✓ .clangd${reset}"
 fi
